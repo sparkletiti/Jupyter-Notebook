@@ -1,0 +1,56 @@
+
+# coding: utf-8
+
+# In[ ]:
+
+
+import pandas as pd
+
+
+# In[4]:
+
+
+pwd
+
+
+# In[5]:
+
+
+cd Downloads
+
+
+# In[6]:
+
+
+df=pd.read_csv ("movies_metadata.csv")
+df.head()
+
+
+# Write a Pandas program to get the details of the movie with title 'Grumpier Old Men'
+
+# In[7]:
+
+
+df[df['title']=='Grumpier Old Men']
+
+
+# Write a Pandas program to sort the DataFrame based on release_date. Let the framework only display the following columns: 'title', 'release_date', 'budget', 'revenue', 'runtime'
+
+# In[10]:
+
+
+SortbyReleaseDate= df.sort_values(by='release_date')[['title', 'release_date', 'budget', 'revenue', 'runtime']]
+SortbyReleaseDate
+
+
+# Write a Pandas program to get those movies whose revenue more than 2 million and spent less than 1 million. Let the framework only display the following columns: 'title', 'release_date', 'budget', 'revenue', 'runtime'
+# 
+# The revenue and budget columns need to be changed to numeric values and the error in the revenue column needs to be removed.
+
+# In[29]:
+
+
+df['revenue'] = pd.to_numeric(df['revenue'], errors='coerce')
+df['budget'] = pd.to_numeric(df['budget'])
+df[((df['revenue']>2000000) & (df['budget']<=1000000))][['title', 'release_date', 'budget', 'revenue', 'runtime']]
+
